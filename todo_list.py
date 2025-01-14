@@ -35,6 +35,10 @@ def add_task(tasks):
 
 def delete_task(tasks):
     """Delete a task."""
+    if not tasks:
+        print("\nAucune tâche à supprimer.")
+        return
+
     list_tasks(tasks)
     try:
         index = int(input("Entrez le numéro de la tâche à supprimer : ")) - 1
@@ -45,6 +49,7 @@ def delete_task(tasks):
             print("Numéro de tâche invalide.")
     except ValueError:
         print("Veuillez entrer un numéro valide.")
+
 
 def complete_task(tasks):
     """Mark a task as complete."""
