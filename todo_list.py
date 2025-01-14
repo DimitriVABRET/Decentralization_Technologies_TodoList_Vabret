@@ -25,9 +25,13 @@ def list_tasks(tasks):
 
 def add_task(tasks):
     """Add a new task."""
-    description = input("Entrez la description de la tâche : ")
-    tasks.append({"description": description, "completed": False})
-    print("Tâche ajoutée avec succès !")
+    description = input("Entrez la description de la tâche : ").strip()
+    # Vérifier si la tâche existe déjà (insensible à la casse)
+    if any(task["description"].lower() == description.lower() for task in tasks):
+        print("Cette tâche existe déjà.")
+    else:
+        tasks.append({"description": description, "completed": False})
+        print("Tâche ajoutée avec succès !")
 
 def delete_task(tasks):
     """Delete a task."""
